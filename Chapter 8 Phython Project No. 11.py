@@ -22,18 +22,27 @@ while True:
     if (pilih == A):
         while True:
             tambahbuah = input('Masukkan nama buah: ')
-            tambahharga = int(input('Masukkan harga buah: '))
-            buah[tambahbuah] = tambahharga
-            lanjut = input('Lanjut (y/n): ')
-            lanjutn = 'n'
-            lanjuty = 'y'
-            if (lanjut == lanjuty):
-                continue
-            elif (lanjut == lanjutn):
-                for key, val in buah.items():
-                    print(key, ':', val)
-                break
-
+            if tambahbuah in buah:
+                print('Buah', tambahbuah, 'sudah ada dalam daftar')
+                print()
+            else:
+                tambahharga = int(input('Masukkan harga buah: '))
+                buah[tambahbuah] = tambahharga
+                while True:
+                    lanjut = input('Tambah lagi (y/n)?: ')
+                    lanjutn = 'n'
+                    lanjuty = 'y'
+                    if (lanjut == lanjuty):
+                        break
+                    elif (lanjut == lanjutn):
+                        break
+                    else:
+                        print('input salah')
+                if (lanjut == lanjutn):
+                    print()
+                    for key, val in buah.items():
+                        print(key, ':', val)
+                    break
     elif (pilih == B):
         hargasementara = []
         while True:
@@ -61,3 +70,5 @@ while True:
             else:
                 print('Tidak ada dalam daftar')
                 print()
+    else:
+        print('Tidak ada dalam menu')
